@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Login {
@@ -11,8 +12,11 @@ public class Login {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int userId;
+	private String userEmail;
 	private String password;
 	private String role;
+	@OneToOne(mappedBy="Login")
+	private Customer customer;
 	
 	
 	

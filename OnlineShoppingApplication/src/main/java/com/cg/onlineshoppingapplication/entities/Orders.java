@@ -15,25 +15,34 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private String orderId;
-	@Column(name="orderDate",columnDefinition="DATE")
+
 	private LocalDate orderDate;
 	private String orderStatus;
 	//@OneToOne
 	//private Map productList;
 	@OneToOne
 	private Address address;
-
+	
+	@OneToOne
+	private Customer customer;
+	
+	
+	@OneToOne
+	private Cart cart;
+	
 	public Orders() {
 		super();
 	}
 
-	public Orders(String orderId, LocalDate orderDate, String orderStatus,Address address) {
+	public Orders(String orderId, LocalDate orderDate, String orderStatus, Address address, Customer customer,
+			Cart cart) {
 		super();
 		this.orderId = orderId;
 		this.orderDate = orderDate;
 		this.orderStatus = orderStatus;
-		//this.customer = customer;
 		this.address = address;
+		this.customer = customer;
+		this.cart = cart;
 	}
 
 	public String getOrderId() {
@@ -60,14 +69,6 @@ public class Orders {
 		this.orderStatus = orderStatus;
 	}
 
-//	public Customer getCustomer() {
-//		return customer;
-//	}
-//
-//	public void setCustomer(Customer customer) {
-//		this.customer = customer;
-//	}
-
 	public Address getAddress() {
 		return address;
 	}
@@ -76,11 +77,28 @@ public class Orders {
 		this.address = address;
 	}
 
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
 	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + "]";
+		return "Orders [orderId=" + orderId + ", orderDate=" + orderDate + ", orderStatus=" + orderStatus + ", address="
+				+ address + ", customer=" + customer + ", cart=" + cart + "]";
 	}
-	
 
+	
 	
 }

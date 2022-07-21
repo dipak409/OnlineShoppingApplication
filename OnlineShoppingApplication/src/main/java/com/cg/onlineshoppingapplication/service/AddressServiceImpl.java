@@ -58,13 +58,11 @@ public class AddressServiceImpl implements AddressService {
 	}
 
 	@Override
-	public Address viewAddress(String id) {
+	public Address viewAddress(int id) {
 		// TODO Auto-generated method stub
-		if(addressRepository.findById(id) != null)
-		{
-			return addressRepository.findById(id);
-		}
-		return null;
+		Optional<Address> findAddress=addressRepository.findById(id);
+		Address findAddressById=findAddress.get();
+		return findAddressById;
 		
 	}
 

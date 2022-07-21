@@ -1,17 +1,30 @@
 package com.cg.onlineshoppingapplication.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.cg.onlineshoppingapplication.entities.Cart;
 import com.cg.onlineshoppingapplication.entities.Product;
+import com.cg.onlineshoppingapplication.repositories.CartRepository;
 
 @Service
 public class CartServiceImpl implements CartService {
+	
+	
+	@Autowired
+	private CartRepository cartRepository;
+	
+	
+	
+	public CartServiceImpl(CartRepository cartRepository) {
+		super();
+		this.cartRepository = cartRepository;
+	}
 
 	@Override
 	public Cart addProductToCart(Cart cart, Product p, int quantity) {
 		// TODO Auto-generated method stub
-		return null;
+		return cartRepository.save(cart);
 	}
 
 	@Override

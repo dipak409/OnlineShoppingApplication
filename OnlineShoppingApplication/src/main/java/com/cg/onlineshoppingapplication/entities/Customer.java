@@ -17,14 +17,19 @@ public class Customer {
 	private String firstName;
 	private String lastName;
 	private String mobileNumber;
-	@OneToOne
+	
+	@OneToOne(mappedBy="customer")
 	private Address address;
+	
 	private String email;
-	@OneToOne
+	
+	@OneToOne(mappedBy="customer")
 	private Login user;
+	
 	@OneToOne
 	private Cart cart;
-	@OneToOne
+	
+	@OneToOne(mappedBy="customer")
 	private Orders order;
 	
 	
